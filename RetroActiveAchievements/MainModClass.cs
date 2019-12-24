@@ -28,9 +28,10 @@ namespace ShipmentTrackerSMAPI {
                 Log("Player has achievement " + achievement + ": " + achievementName);
                 Program.sdk.GetAchievement(string.Concat((object)achievement));
             }
-            
-            Program.sdk.ResetAchievements();
-            Game1.playSound("achievement");
+
+            if (SteamAPI.IsSteamRunning()) { 
+                Game1.playSound("achievement");
+            }
         }
 
         public static void Log(string message) {
